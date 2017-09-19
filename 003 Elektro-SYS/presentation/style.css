@@ -1,0 +1,104 @@
+/*@import url(http://fonts.googleapis.com/css?family=PT+Serif|PT+Serif:b|PT+Serif:i);*/
+
+body {
+	font-family: "Nitti Grotesk", Helvetica, Arial, sans-serif;
+}
+span.char {
+	font-family: "Nitti WM2", "Nitti Grotesk", Helvetica, Arial, sans-serif;
+}
+
+.indicator {
+	display: none;
+}
+
+section {
+	background: #fff;
+	padding: 2em;
+}
+
+section img,
+section video {
+	width: 100%;
+}
+
+del {
+	color: red;
+}
+
+#follow {
+  background: none;
+}
+
+.source {
+	color: #777;
+	font-size: medium;
+	position: absolute;
+	bottom: 1em;
+	left: 2em;	
+}
+.source::before { 
+    content: "Source: ";
+}
+
+.grey {
+	color: #bbb;
+}
+
+a:link,
+a:visited {
+  color: black;
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    background: #999;
+}
+
+.highlight {
+	background: #FFFF00;
+}
+
+.encircle {
+	border: 2px solid #000;
+	border-radius: 1em;
+	padding: 0 0.25em;
+	margin: 0 -0.35em;
+}
+
+table.cf td {padding: 0 0.8em}
+table.cf {border-collapse: separate; border-spacing: 0;}
+table.cf td {text-align: center}
+table.cf td:nth-child(1) {text-align: right}
+table.cf tbody td:nth-child(2) { border-left: 1px solid #000}
+table.cf tbody td:nth-child(3) { border-right: 1px solid #000} /*border-left: 1px dashed #777;*/
+table.cf td:nth-child(4) {text-align: right}
+table.cf tfoot td {padding: 1em 1em}
+table.cf td pre, table.cf td code {display: inline; font-size: 80%}
+
+table.other tr {vertical-align: top;}
+table.other tr th { text-align:left; width: 25%; }
+
+dl dt {
+	font-weight: bold;
+}
+
+ul.huge li {
+	font-size: 155%;
+	line-height: 1.2em;
+	margin: 1.7em;
+}
+
+.blackout {
+	background: #000;
+	color: #fff;
+}
+
+blockquote {
+	font-style: italic;
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>A 15 minute introduction to Mechanism Design</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<link rel="stylesheet" type="text/css" href="style.css" /> <!-- media="screen" /> -->
+<link rel="stylesheet" type="text/css" href="pdf.css" /> <!-- media="print" /> -->
+<link rel="stylesheet" href="katex.min.css">
+<script src="katex.min.js"></script>
+<script src="auto-render.min.js"></script>
+</head>
+<body>
+
+
+<section style="text-align:center;padding-top:5em;">
+	<h1>A 15 minute introduction to <em>Mechanism Design</em></h1>
+	<p>Jonas K. Sekamane</p>
+	<p><sub><em>14th of September 2017, EER-ELMA (DTU Elektro) joint seminar</em></sub></p>
+	<p><sub>Based on the course <a href="https://github.com/schottmueller/mechdes/blob/master/2016.org">Mechanism Design (Spring 2017)</a> at the University of Copenhagen</sub></p>
+</section>
+
+
+
+<section>
+	<h1><em>Mechanism Design</em> summed up!</h1>
+	<!--<hr>
+	<h3 style="line-height: 1.3em; text-align: center;">"agents" have private information
+		<br><br>&amp;
+		<br><br>which game – do you have to let agents play – to get the outcome that you want?</h3>
+	<hr>-->
+	<ul class="huge">
+		<li>"agents" have private information.</li>
+		<li>which game – do you have to let agents play – to get the outcome that you want?</li>
+	</ul>
+</section>
+
+
+<section style="background: #fff url('images/mechanismdesign01.png') no-repeat 50% 105%; background-size: 55% 55%;">
+	<h1>Social choice function</h1>
+	<p>Desired outcome as a function of the agents’ types</p>
+	<!--$$f : \Theta_1 \times \Theta_2 \times ... \times \Theta_I \rightarrow X$$-->
+	\[ f : \underbrace{\Theta_1 \times \Theta_2 \times ... \times \Theta_I}_{\text{type set of agents}} \quad \to \underbrace{X}_{\text{set of alternatives}} \]
+	<!--<img src="images/mechanismdesign01.png" style="position:absolute; bottom: -2em; left:25%; width:50%"> -->
+</section>
+<!-- set of alternatives = outcomes -->
+
+
+<section>
+	<h1 style="margin-bottom: 0">Mechanism</h1>
+	\[ \Gamma = \left( \underbrace{S_1, S_2, ..., S_I}_{\text{strategy sets}} \quad, \underbrace{g(\cdot)}_{\text{outcome function}} \right) \]
+	<p style="text-align: center; margin-top:-0.3em"><sub>where \(g : S_1, S_2, ..., S_I \to X\)</sub></p>
+</section>
+<section style="background: #fff url('images/arrow.png') no-repeat 50% 60%;">
+	<h1 style="margin-bottom: 0">Mechanism</h1>
+	\[ \Gamma = \left( \underbrace{S_1, S_2, ..., S_I}_{\text{strategy sets}} \quad, \underbrace{g(\cdot)}_{\text{outcome function}} \right) \]
+	<p style="text-align: center; margin-top:-0.3em"><sub>where \(g : S_1, S_2, ..., S_I \to X\)</sub></p>
+	<div style="border: 1px #000 solid; padding: 0.5em 1em 0 1em">
+		Induces a <em>Bayesian game</em>:
+		<ul style="margin-top:0">
+			<li>Agents choose a strategy from their strategy set.</li>
+			<li>Through the mechanism (i.e. rules of the game) their payoff depends on all agents’ strategy choices.</li>
+			<li>Every agent is uncertain about other agents’ type.</li>
+		</ul>
+	</div>
+</section>
+
+
+<section style="background: #fff url('images/mechanismdesign02.png') no-repeat 50% 105%; background-size: 55% 55%;">
+	<h1><em>Implementing</em> a social choice function</h1>
+	<p>The mechanism \(\Gamma\) implements the social choice function \(f\), <br>if the game has <strong>an equilibrium</strong> in which we get the desired outcome, i.e.: \( g \left( s^*_1(\theta_1), s^*_2(\theta_2), ..., s^*_I(\theta_I) \right) = f(\theta_1,\theta_2,...,\theta_I) \) <span class="grey">\(\quad\forall \theta_i, i\)</span></p>
+</section>
+
+<!--
+<section style="background: #fff url('images/mechanismdesign03.png') no-repeat 50% 105%; background-size: 55% 55%;">
+	<h1><em>Truthfully implementable</em></h1>
+	<p>A social choice function \(f\) is truthfully implementable, if the <em>direct revelation mechanism</em>
+\(\Gamma = (\Theta_1,\Theta_2,...,\Theta_I,f)\) has an equilibrium in which \(s^*_i(\theta_i) = \theta_i\) <span class="grey">\(\quad\forall \theta_i, i\)</span></p>
+</section>
+-->
+
+
+<section>
+	<h1><em>Revelation principle</em></h1>
+	<!--<p>Which social choice functions can be implemented?</p>-->
+	<div style="text-align:center">
+		<hr>
+		<p>if \(f\) can be implemented <!--in dominant strategies--> by some mechanism \(Γ\), <br>then \(f\) is <em>truthfully implementable</em></p>
+		<p>\[ \Updownarrow \]</p>
+		<p>if truthful implementation does not work, <br>then no mechanism will work</p>
+		<hr>
+	</div>
+	<!-- ><p>Narrows down the search, since we can ignore social choice functions where agents are unwilling to truthfully reveal type in direct revalation mechanism</p> -->
+</section>
+<!-- Truthfully implementable: equilibrium to annonce true type, and mechansim implements the annonced type -->
+
+<section style="background: #fff url('images/equilibrium01.png') no-repeat 3% 50%;">
+	<h1>Equilibrium concepts</h1>
+	<div style="padding-left: 35%">
+		<p><strong>Dominat strategy equilibrium:</strong>, i.e. \(s_i\) that maximises utility, no matter what other agents do.<span class="grey">\(\quad\forall \theta_i, i\)</span></p>
+		<ul>
+			<li>No need to predict what others will play.</li>
+			<li>No need to know type distribution.</li>
+			<li>Works even if agents think others are non-rational/ill-informed.</li>
+		</ul>
+	</div>
+</section>
+
+<section style="text-align:center; padding: 8em 6em 0 6em;">
+	<h3 style="line-height: 1.3em">So, which social choice functions are (truthfully) implementable (in dominant strategies)?</h3>
+</section>
+
+<section>
+	<h1><em>Gibbard-Satterhwaite</em> theorem</h1>
+	<div style="border: 1px #000 solid; padding: 0.5em 4em 0.5em 4em">
+		<p>Only dictatorial social choice functions are truthfully implementable in dominant strategies.</p>
+	</div>
+</section>
+<section>
+	<h1><em>Gibbard-Satterhwaite</em> theorem</h1>
+	<div style="border: 1px #000 solid; padding: 0.5em 4em 0.5em 4em">
+		<p>Only dictatorial social choice functions are truthfully implementable in <span class="highlight">dominant strategies</span>.</p>
+		<p>... when <span class="highlight">all preferences on \(X\) are possible</span> for all agents \(i\).</p>
+	</div>
+</section>
+
+
+<section>
+	<h1>Let's restrict preferences.</h1>
+	<p>Now consider Quasi-linear preferences:</p>
+	<p style="text-align: center">\( u_i(x,\theta_i) = k \theta_i + t_i, \) <span class="grey">\(\quad k \in \{0,1\}\)</span></p>
+	<p>Linear in one good (prefer more to less)</p>
+	<p class="grey">Other possibilities: linear preferences, single-peaked preferences (Political Economy)</p>
+</section>
+<section style="background: #fff url('images/arrow.png') no-repeat 50% 51%;">
+	<h1>Let's restrict preferences.</h1>
+	<p>Now consider Quasi-linear preferences:</p>
+	<p style="text-align: center">\( u_i(x,\theta_i) = k \theta_i + t_i, \) <span class="grey">\(\quad k \in \{0,1\}\)</span></p>
+	<div style="border: 1px #000 solid; padding: 0.5em 1em 0 1em; margin-top:2em">
+		<em>Groves-Clarke mechanism</em>: Externality transfers when agent is pivotal.
+		<ul style="margin-top:0">
+			<li>Trutfully implementable in dominant strategy</li>
+			<li>Efficient (allocation)</li>
+			<li>
+				However, not budget balanced <br>
+				(agents pay more than others receive – we burn money!)
+			</li>
+		</ul>
+	</div>
+</section>
+<section style="background: #fff url('images/arrow.png') no-repeat 50% 51%;">
+	<h1>Let's restrict preferences.</h1>
+	<p>Now consider Quasi-linear preferences:</p>
+	<p style="text-align: center">\( u_i(x,\theta_i) = k \theta_i + t_i, \) <span class="grey">\(\quad k \in \{0,1\}\)</span></p>
+	<div style="border: 1px #000 solid; padding: 0.5em 1em 0 1em; margin-top:2em">
+		<em>Groves-Clarke mechanism</em>: Externality transfers when agent is pivotal.
+		<ul style="margin-top:0">
+			<li>Trutfully implementable in dominant strategy</li>
+			<li>Efficient (allocation)</li>
+			<li>
+				However, not budget balanced <br>
+				(agents pay more than others receive – we burn money!)<br>
+				<span class="highlight">"Fix": if one agent with public infomation \(\Rightarrow\) give extra money to this agent.</span>
+			</li>
+		</ul>
+	</div>
+</section>
+
+
+<section style="background: #fff url('images/equilibrium02.png') no-repeat 3% 50%;">
+	<h1>Equilibrium concepts</h1>
+	<div style="padding-left: 35%">
+		<p><strong>Bayesian Nash equilibrium:</strong>, i.e. if no type of no agent can increase expected payoff by deviating.</span></p>
+		<ul> <!-- Weaker eq. concept -->
+			<li>More implementable social choice functions.</li>
+			<li>Less confident that agents adhere to it in real-life.</li>
+			<li>Agents and "mechanism designer" needs to know type distribution.</li>
+		</ul>
+	</div>
+</section>
+
+<!-- 
+<section style="text-align:center; padding: 8em 6em 0 6em;">
+	<h3 style="line-height: 1.3em">So, which social choice functions are (truthfully) implementable (in Bayesian Nash equilibrium)?</h3>
+</section>
+-->
+
+<section style="background: #fff url('images/arrow.png') no-repeat 50% 39%;">
+	<h1>Extending Groves-Clarke ...</h1>
+	<p>Assume that agents' types are statistically independent.</p>
+	<div style="border: 1px #000 solid; padding: 0.5em 1em 0 1em; margin-top:2em">
+		<em>Expected Externality mechanism</em>: Agents pay expected externality imposed on others, while all collected payments are recirculated among agents.
+		<ul style="margin-top:0">
+			<li>Trutfully implementable in Bayesian Nash equilibrium</li>
+			<li>Efficient (allocation)</li>
+			<li>Budget balanced</li>
+			<li>
+				However, does not fulfill participation constraint <br>
+				(agents pays more than their valuation – will not participate voluntarily).
+			</li>
+		</ul>
+	</div>
+</section>
+
+<section style="text-align:center; padding: 8em 4em 0 4em;">
+	<h3 style="line-height: 1.3em">Is there a trading mechanism with efficient (allocation), balanced budget, and where agents will participate voluntarily?</h3>
+</section>
+
+<section>
+	<h1><em>Myerson-Satterthwaite</em> theorem</h1>
+	<p>No.</p>
+</section>
+<section>
+	<h1><em>Myerson-Satterthwaite</em> theorem</h1>
+	<p>No.</p>
+	<p>Tension between incentives and efficiency. I.e. no matter the mechanism – agents are going to tend to lie – leading to some inefficient trades.</p>
+</section>
+<section>
+	<h1><em>Myerson-Satterthwaite</em> theorem</h1>
+	<p>No.</p>
+	<p>Tension between incentives and efficiency. I.e. no matter the mechanism – agents are going to tend to lie – leading to some inefficient trades.</p>
+	<p>However</p>
+	<ul>
+		<li>inefficiencies decrease asymtotically as the number of buyers and sellers increase.</li>
+		<li>the theorem, concerns <em>ex post efficiency</em> (i.e. when all types are know). <br>Many mechanisms are <em>ex ante effcient</em> (i.e. before knowing the types) or <em>interim effcient</em> (i.e. when knowing own type but not others' types) – so timing matters.</li>
+	</ul>
+</section>
+
+
+<section>
+	<h1>Optimal mechanisms</h1>
+	<p>Often take the perspective of one agent and choose the effcient (and feasible) mechanism that maximizes this agent’s utility.</p>
+	<ul>
+		<li>pricing scheme that maximizes the profits of a seller</li>
+		<li>regulatory scheme that maximizes consumer surplus</li>
+		<li>income tax scheme that maximizes the payoff of a utilitarian government</li>
+		<li>etc.</li>
+	</ul>
+	<p>Private information creates distortions – you have to pay rents in order to truthfully extract information – and distortions can reduce these information rents.</p>
+</section>
+
+
+<section id="lorenz" style="text-align:center;padding-top:0;" class="blackout">
+  <canvas></canvas>
+  <h1 style="position: absolute; top: 40%; left:40%; text-shadow: 2px 2px 2px #000">Thank you</h1>
+</section>
+
+<section class="blackout">
+</section>
+
+<script src="d3.v3.min.js"></script>
+<script src="stack.v1.js"></script>
+<script src="script.js"></script>
+<script>
+renderMathInElement(document.body);
+</script>
+
+</body>
+</html>
